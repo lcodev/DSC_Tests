@@ -1,7 +1,14 @@
 Configuration AddFile
 {
+    param (
+        # Parameter help description
+        [Parameter(Mandatory = $true)]
+        [string[]]
+        $ComputerName
+    )
+
     Import-DscResource -ModuleName PSDesiredStateConfiguration
-    Node Server1
+    Node $ComputerName
     {
         File TestFile
         {
