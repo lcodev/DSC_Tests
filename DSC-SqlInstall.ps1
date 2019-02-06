@@ -8,6 +8,7 @@ Configuration SqlInstall
         $ComputerName
     )
 
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName SqlServerDsc
     Node $ComputerName
     {
@@ -21,11 +22,11 @@ Configuration SqlInstall
         {
             InstanceName = 'MSSQLSERVER'
             Features = 'SQLENGINE'
-            SourcePath = '\\lcowd\SQL2016'
+            SourcePath = 'D:\'
             SQLSysAdminAccounts = @('domain admins')
             DependsOn = '[WindowsFeature]NetFramework45'
         }
     }
 }
 
-SqlInstall -OutputPath D:\Tests\MOF 
+SqlInstall -OutputPath E:\MOF 
